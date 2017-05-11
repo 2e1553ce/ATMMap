@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		1933AF6D1EC4703D008001E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF6C1EC4703D008001E4 /* main.m */; };
 		1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF6F1EC4703D008001E4 /* AppDelegate.m */; };
-		1933AF731EC4703D008001E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF721EC4703D008001E4 /* ViewController.m */; };
-		1933AF761EC4703D008001E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933AF741EC4703D008001E4 /* Main.storyboard */; };
 		1933AF781EC4703D008001E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1933AF771EC4703D008001E4 /* Assets.xcassets */; };
 		1933AF7B1EC4703D008001E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933AF791EC4703D008001E4 /* LaunchScreen.storyboard */; };
 		1933AF861EC4703D008001E4 /* ATMMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF851EC4703D008001E4 /* ATMMapTests.m */; };
 		1933AF911EC4703D008001E4 /* ATMMapUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF901EC4703D008001E4 /* ATMMapUITests.m */; };
+		1933AFA01EC47075008001E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1933AF9F1EC47075008001E4 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +38,6 @@
 		1933AF6C1EC4703D008001E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1933AF6E1EC4703D008001E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1933AF6F1EC4703D008001E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1933AF711EC4703D008001E4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1933AF721EC4703D008001E4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1933AF751EC4703D008001E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1933AF771EC4703D008001E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1933AF7A1EC4703D008001E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1933AF7C1EC4703D008001E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +47,7 @@
 		1933AF8C1EC4703D008001E4 /* ATMMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATMMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1933AF901EC4703D008001E4 /* ATMMapUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATMMapUITests.m; sourceTree = "<group>"; };
 		1933AF921EC4703D008001E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1933AF9F1EC47075008001E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1933AFA01EC47075008001E4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +83,7 @@
 				1933AF841EC4703D008001E4 /* ATMMapTests */,
 				1933AF8F1EC4703D008001E4 /* ATMMapUITests */,
 				1933AF691EC4703D008001E4 /* Products */,
+				1933AF9E1EC47075008001E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,11 +100,11 @@
 		1933AF6A1EC4703D008001E4 /* ATMMap */ = {
 			isa = PBXGroup;
 			children = (
+				1933AFA11EC470B2008001E4 /* Model */,
+				1933AFA21EC470BC008001E4 /* View */,
+				1933AFA31EC470C3008001E4 /* Controller */,
 				1933AF6E1EC4703D008001E4 /* AppDelegate.h */,
 				1933AF6F1EC4703D008001E4 /* AppDelegate.m */,
-				1933AF711EC4703D008001E4 /* ViewController.h */,
-				1933AF721EC4703D008001E4 /* ViewController.m */,
-				1933AF741EC4703D008001E4 /* Main.storyboard */,
 				1933AF771EC4703D008001E4 /* Assets.xcassets */,
 				1933AF791EC4703D008001E4 /* LaunchScreen.storyboard */,
 				1933AF7C1EC4703D008001E4 /* Info.plist */,
@@ -138,6 +137,35 @@
 				1933AF921EC4703D008001E4 /* Info.plist */,
 			);
 			path = ATMMapUITests;
+			sourceTree = "<group>";
+		};
+		1933AF9E1EC47075008001E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1933AF9F1EC47075008001E4 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1933AFA11EC470B2008001E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1933AFA21EC470BC008001E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1933AFA31EC470C3008001E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +279,6 @@
 			files = (
 				1933AF7B1EC4703D008001E4 /* LaunchScreen.storyboard in Resources */,
 				1933AF781EC4703D008001E4 /* Assets.xcassets in Resources */,
-				1933AF761EC4703D008001E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +303,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1933AF731EC4703D008001E4 /* ViewController.m in Sources */,
 				1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */,
 				1933AF6D1EC4703D008001E4 /* main.m in Sources */,
 			);
@@ -314,14 +340,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1933AF741EC4703D008001E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1933AF751EC4703D008001E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1933AF791EC4703D008001E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
