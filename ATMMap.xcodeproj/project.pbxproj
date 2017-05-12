@@ -14,6 +14,10 @@
 		1933AF861EC4703D008001E4 /* ATMMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF851EC4703D008001E4 /* ATMMapTests.m */; };
 		1933AF911EC4703D008001E4 /* ATMMapUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF901EC4703D008001E4 /* ATMMapUITests.m */; };
 		1933AFA01EC47075008001E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1933AF9F1EC47075008001E4 /* MapKit.framework */; };
+		19F3B7601EC5FDA3006D610A /* AVGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B75F1EC5FDA3006D610A /* AVGMapViewController.m */; };
+		19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7621EC5FE00006D610A /* AVGATMTableViewController.m */; };
+		19F3B7691EC5FEB5006D610A /* AVGATMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7681EC5FEB5006D610A /* AVGATMService.m */; };
+		19F3B76C1EC5FF2A006D610A /* AVGControllerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,15 @@
 		1933AF901EC4703D008001E4 /* ATMMapUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATMMapUITests.m; sourceTree = "<group>"; };
 		1933AF921EC4703D008001E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1933AF9F1EC47075008001E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		19F3B75E1EC5FDA3006D610A /* AVGMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGMapViewController.h; sourceTree = "<group>"; };
+		19F3B75F1EC5FDA3006D610A /* AVGMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGMapViewController.m; sourceTree = "<group>"; };
+		19F3B7611EC5FE00006D610A /* AVGATMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMTableViewController.h; sourceTree = "<group>"; };
+		19F3B7621EC5FE00006D610A /* AVGATMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATMTableViewController.m; sourceTree = "<group>"; };
+		19F3B7671EC5FEB5006D610A /* AVGATMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMService.h; sourceTree = "<group>"; };
+		19F3B7681EC5FEB5006D610A /* AVGATMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATMService.m; sourceTree = "<group>"; };
+		19F3B76A1EC5FF2A006D610A /* AVGControllerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGControllerService.h; sourceTree = "<group>"; };
+		19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGControllerService.m; sourceTree = "<group>"; };
+		19F3B76D1EC60EFE006D610A /* AVGATMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +163,8 @@
 		1933AFA11EC470B2008001E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				19F3B76D1EC60EFE006D610A /* AVGATMManager.h */,
+				19F3B7641EC5FE38006D610A /* Service */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -164,8 +179,55 @@
 		1933AFA31EC470C3008001E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				19F3B75D1EC5FD5A006D610A /* Table */,
+				19F3B75C1EC5FD4C006D610A /* Map */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		19F3B75C1EC5FD4C006D610A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B75E1EC5FDA3006D610A /* AVGMapViewController.h */,
+				19F3B75F1EC5FDA3006D610A /* AVGMapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		19F3B75D1EC5FD5A006D610A /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B7611EC5FE00006D610A /* AVGATMTableViewController.h */,
+				19F3B7621EC5FE00006D610A /* AVGATMTableViewController.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		19F3B7641EC5FE38006D610A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B7661EC5FE68006D610A /* Controllers */,
+				19F3B7651EC5FE46006D610A /* ATM */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		19F3B7651EC5FE46006D610A /* ATM */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B7671EC5FEB5006D610A /* AVGATMService.h */,
+				19F3B7681EC5FEB5006D610A /* AVGATMService.m */,
+			);
+			name = ATM;
+			sourceTree = "<group>";
+		};
+		19F3B7661EC5FE68006D610A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B76A1EC5FF2A006D610A /* AVGControllerService.h */,
+				19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F3B76C1EC5FF2A006D610A /* AVGControllerService.m in Sources */,
 				1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */,
+				19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */,
 				1933AF6D1EC4703D008001E4 /* main.m in Sources */,
+				19F3B7601EC5FDA3006D610A /* AVGMapViewController.m in Sources */,
+				19F3B7691EC5FEB5006D610A /* AVGATMService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +600,7 @@
 				1933AF971EC4703D008001E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1933AF981EC4703D008001E4 /* Build configuration list for PBXNativeTarget "ATMMapTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +609,7 @@
 				1933AF9A1EC4703D008001E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1933AF9B1EC4703D008001E4 /* Build configuration list for PBXNativeTarget "ATMMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +618,7 @@
 				1933AF9D1EC4703D008001E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
