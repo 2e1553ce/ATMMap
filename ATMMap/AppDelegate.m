@@ -27,7 +27,7 @@
     
     UITabBarController *tabBarController = [UITabBarController new];
     
-    
+    // Navigation controllers
     UINavigationController *mapNavigationController = [UINavigationController new];
     mapNavigationController.tabBarItem.title = @"Карта";
     mapNavigationController.tabBarItem.titlePositionAdjustment = UIOffsetMake(0.f, -10.f);
@@ -38,16 +38,19 @@
     
     _controllerService = [AVGControllerService new];
     
+    // Map view controller
     AVGMapViewController *mapViewController = [AVGMapViewController new];
     mapViewController.controllerService = _controllerService;
     mapNavigationController.viewControllers = @[mapViewController];
     
     [mapViewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(-100, -100)];
     
+    // Table view controller
     AVGATMTableViewController *atmTableViewController = [AVGATMTableViewController new];
     atmTableViewController.controllerService = _controllerService;
     tableNavigationController.viewControllers = @[atmTableViewController];
     
+    // Setting Tabbar controller
     tabBarController.viewControllers = @[mapNavigationController, tableNavigationController];
     
     window.rootViewController = tabBarController;

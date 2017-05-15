@@ -6,11 +6,12 @@
 //  Copyright © 2017 A.V. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "AVGATMManager.h"
 
 @interface AVGATMService : NSObject <AVGATMManager>
 
+#warning Stop all tasks?
+#warning как он видит нсобж итд
 @property (nonatomic, strong) NSURLSession *session;
 
 @end

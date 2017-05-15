@@ -6,12 +6,14 @@
 //  Copyright © 2017 A.V. All rights reserved.
 //
 
-@import Foundation;
+#warning for CLLocationCoordinat2D fix? forward decl
+#import <CoreLocation/CLLocation.h>
 
 @protocol AVGATMManager <NSObject>
 
 @required
-- (void)getATMsInfoFromServerWithCompletionHandler:(void(^)(NSArray *ATMs, NSError *error))completion;
-
+- (void)getATMsWithName:(NSString *)name
+           nearLocation:(CLLocationCoordinate2D)coordinate
+  withCompletionHandler:(void(^)(NSArray *ATMs, NSError *error))completion;
 
 @end

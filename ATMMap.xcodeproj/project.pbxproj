@@ -18,6 +18,9 @@
 		19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7621EC5FE00006D610A /* AVGATMTableViewController.m */; };
 		19F3B7691EC5FEB5006D610A /* AVGATMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7681EC5FEB5006D610A /* AVGATMService.m */; };
 		19F3B76C1EC5FF2A006D610A /* AVGControllerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */; };
+		19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7731EC9EEEC006D610A /* AVGATM.m */; };
+		19F3B7771ECA1FEE006D610A /* AVGMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */; };
+		19F3B77B1ECA52DA006D610A /* sberbankLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77A1ECA52DA006D610A /* sberbankLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,11 @@
 		19F3B76A1EC5FF2A006D610A /* AVGControllerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGControllerService.h; sourceTree = "<group>"; };
 		19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGControllerService.m; sourceTree = "<group>"; };
 		19F3B76D1EC60EFE006D610A /* AVGATMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMManager.h; sourceTree = "<group>"; };
+		19F3B7721EC9EEEC006D610A /* AVGATM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATM.h; sourceTree = "<group>"; };
+		19F3B7731EC9EEEC006D610A /* AVGATM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATM.m; sourceTree = "<group>"; };
+		19F3B7751ECA1FEE006D610A /* AVGMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGMapAnnotation.h; sourceTree = "<group>"; };
+		19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGMapAnnotation.m; sourceTree = "<group>"; };
+		19F3B77A1ECA52DA006D610A /* sberbankLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sberbankLogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +129,7 @@
 				1933AF771EC4703D008001E4 /* Assets.xcassets */,
 				1933AF791EC4703D008001E4 /* LaunchScreen.storyboard */,
 				1933AF7C1EC4703D008001E4 /* Info.plist */,
+				19F3B77A1ECA52DA006D610A /* sberbankLogo.png */,
 				1933AF6B1EC4703D008001E4 /* Supporting Files */,
 			);
 			path = ATMMap;
@@ -129,6 +138,7 @@
 		1933AF6B1EC4703D008001E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				19F3B7781ECA5269006D610A /* Images */,
 				1933AF6C1EC4703D008001E4 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -165,6 +175,7 @@
 			children = (
 				19F3B76D1EC60EFE006D610A /* AVGATMManager.h */,
 				19F3B7641EC5FE38006D610A /* Service */,
+				19F3B7711EC9EE70006D610A /* ATM */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -172,6 +183,8 @@
 		1933AFA21EC470BC008001E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				19F3B7751ECA1FEE006D610A /* AVGMapAnnotation.h */,
+				19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -207,18 +220,18 @@
 			isa = PBXGroup;
 			children = (
 				19F3B7661EC5FE68006D610A /* Controllers */,
-				19F3B7651EC5FE46006D610A /* ATM */,
+				19F3B7651EC5FE46006D610A /* Google ATM */,
 			);
 			name = Service;
 			sourceTree = "<group>";
 		};
-		19F3B7651EC5FE46006D610A /* ATM */ = {
+		19F3B7651EC5FE46006D610A /* Google ATM */ = {
 			isa = PBXGroup;
 			children = (
 				19F3B7671EC5FEB5006D610A /* AVGATMService.h */,
 				19F3B7681EC5FEB5006D610A /* AVGATMService.m */,
 			);
-			name = ATM;
+			name = "Google ATM";
 			sourceTree = "<group>";
 		};
 		19F3B7661EC5FE68006D610A /* Controllers */ = {
@@ -228,6 +241,30 @@
 				19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		19F3B7711EC9EE70006D610A /* ATM */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B7721EC9EEEC006D610A /* AVGATM.h */,
+				19F3B7731EC9EEEC006D610A /* AVGATM.m */,
+			);
+			name = ATM;
+			sourceTree = "<group>";
+		};
+		19F3B7781ECA5269006D610A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B7791ECA5271006D610A /* SberbankLogo */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		19F3B7791ECA5271006D610A /* SberbankLogo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SberbankLogo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +378,7 @@
 			files = (
 				1933AF7B1EC4703D008001E4 /* LaunchScreen.storyboard in Resources */,
 				1933AF781EC4703D008001E4 /* Assets.xcassets in Resources */,
+				19F3B77B1ECA52DA006D610A /* sberbankLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,8 +404,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F3B76C1EC5FF2A006D610A /* AVGControllerService.m in Sources */,
+				19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */,
 				1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */,
 				19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */,
+				19F3B7771ECA1FEE006D610A /* AVGMapAnnotation.m in Sources */,
 				1933AF6D1EC4703D008001E4 /* main.m in Sources */,
 				19F3B7601EC5FDA3006D610A /* AVGMapViewController.m in Sources */,
 				19F3B7691EC5FEB5006D610A /* AVGATMService.m in Sources */,
