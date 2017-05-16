@@ -66,16 +66,73 @@
         return nil;
     }
     static NSString *pinIdentifier = @"MapAnnotationView";
-    MKPinAnnotationView *pin = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:pinIdentifier];
+    MKAnnotationView *pin = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:pinIdentifier];
     if (!pin) {
-        pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pinIdentifier];
+        pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pinIdentifier];
         pin.image = [UIImage imageNamed:@"sberbankLogo.png"];
         pin.canShowCallout = YES;
-        pin.animatesDrop = YES;
+        pin.rightCalloutAccessoryView = [self routeButton];
+        //pin.animatesDrop = YES;
     } else {
         pin.annotation = annotation;
     }
     return  pin;
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)annotationViews {
+    
+    for (MKAnnotationView *annotationView in annotationViews) {
+        
+        if ([annotationView isEqual:[self.mapView userLocation]]) {
+            continue;
+        }
+        
+        // Check if current annotation is inside visible map rect, else go to next one
+        
+        MKMapPoint point =  MKMapPointForCoordinate(annotationView.annotation.coordinate);
+        if (!MKMapRectContainsPoint(self.mapView.visibleMapRect, point)) {
+            continue;
+        }
+        
+        
+        
+        CGRect endFrame = annotationView.frame;
+        
+        annotationView.frame = CGRectOffset(endFrame, 0,-500);
+        
+        [UIView animateWithDuration:0.5 delay:0.04*[annotationViews indexOfObject:annotationView] options: UIViewAnimationOptionCurveLinear animations:^{
+            
+            annotationView.frame = endFrame;
+            
+            // Animate squash
+        }completion:^(BOOL finished){
+            if (finished) {
+                [UIView animateWithDuration:0.05 animations:^{
+                    annotationView.transform = CGAffineTransformMakeScale(1.0, 0.8);
+                    
+                }completion:^(BOOL finished){
+                    if (finished) {
+                        [UIView animateWithDuration:0.1 animations:^{
+                            annotationView.transform = CGAffineTransformIdentity;
+                        }];
+                    }
+                }];
+            }
+        }];
+    }
+}
+
+#pragma mark - Custom button
+
+- (UIButton *)routeButton {
+    UIImage *image = [UIImage imageNamed:@"route.png"];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, image.size.width, image.size.height); // don't use auto layout
+    [button setImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(routeButtonTapped:) forControlEvents:UIControlEventPrimaryActionTriggered];
+    
+    return button;
 }
 
 #pragma mark - Actions
@@ -118,6 +175,10 @@
     [self.mapView setVisibleMapRect:zoomRect
                         edgePadding:UIEdgeInsetsMake(50.f, 50.f, 50.f, 50.f)
                            animated:YES];
+}
+
+- (void)routeButtonTapped:(UIButton *)sender {
+    
 }
 
 @end

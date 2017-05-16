@@ -20,7 +20,8 @@
 		19F3B76C1EC5FF2A006D610A /* AVGControllerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */; };
 		19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7731EC9EEEC006D610A /* AVGATM.m */; };
 		19F3B7771ECA1FEE006D610A /* AVGMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */; };
-		19F3B77B1ECA52DA006D610A /* sberbankLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77A1ECA52DA006D610A /* sberbankLogo.png */; };
+		19F3B77D1ECB0D64006D610A /* sberbankLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77C1ECB0D64006D610A /* sberbankLogo.png */; };
+		19F3B77F1ECB1150006D610A /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77E1ECB1150006D610A /* route.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +69,8 @@
 		19F3B7731EC9EEEC006D610A /* AVGATM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATM.m; sourceTree = "<group>"; };
 		19F3B7751ECA1FEE006D610A /* AVGMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGMapAnnotation.h; sourceTree = "<group>"; };
 		19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGMapAnnotation.m; sourceTree = "<group>"; };
-		19F3B77A1ECA52DA006D610A /* sberbankLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sberbankLogo.png; sourceTree = "<group>"; };
+		19F3B77C1ECB0D64006D610A /* sberbankLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sberbankLogo.png; sourceTree = "<group>"; };
+		19F3B77E1ECB1150006D610A /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +131,6 @@
 				1933AF771EC4703D008001E4 /* Assets.xcassets */,
 				1933AF791EC4703D008001E4 /* LaunchScreen.storyboard */,
 				1933AF7C1EC4703D008001E4 /* Info.plist */,
-				19F3B77A1ECA52DA006D610A /* sberbankLogo.png */,
 				1933AF6B1EC4703D008001E4 /* Supporting Files */,
 			);
 			path = ATMMap;
@@ -255,6 +256,7 @@
 		19F3B7781ECA5269006D610A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19F3B77E1ECB1150006D610A /* route.png */,
 				19F3B7791ECA5271006D610A /* SberbankLogo */,
 			);
 			name = Images;
@@ -263,6 +265,7 @@
 		19F3B7791ECA5271006D610A /* SberbankLogo */ = {
 			isa = PBXGroup;
 			children = (
+				19F3B77C1ECB0D64006D610A /* sberbankLogo.png */,
 			);
 			name = SberbankLogo;
 			sourceTree = "<group>";
@@ -376,9 +379,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F3B77F1ECB1150006D610A /* route.png in Resources */,
 				1933AF7B1EC4703D008001E4 /* LaunchScreen.storyboard in Resources */,
 				1933AF781EC4703D008001E4 /* Assets.xcassets in Resources */,
-				19F3B77B1ECA52DA006D610A /* sberbankLogo.png in Resources */,
+				19F3B77D1ECB0D64006D610A /* sberbankLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
