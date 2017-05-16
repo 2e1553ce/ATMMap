@@ -18,6 +18,7 @@
 @property (strong, nonatomic) AVGATMService *atmService;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, copy) NSArray *atms;
+@property (nonatomic, strong) UISegmentedControl *mapSegmentControl;
 
 @end
 
@@ -30,18 +31,20 @@
     self.view.backgroundColor = UIColor.whiteColor;
     
     self.atmService = [AVGATMService new];
-    
-    [self setupMap];
+    [self setUpInterface];
 }
 
 #pragma mark - Setting map view
 
-- (void)setupMap {
+- (void)setUpInterface {
+    // Map view
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     
+    // UIBarButtons at navigation bar
+    // On the right
     UIBarButtonItem *showATMsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                             target:self
                                                                             action:@selector(showATMs:)];
@@ -51,7 +54,14 @@
                                                                                     target:self
                                                                                     action:@selector(scaleToAllPins:)];
     self.navigationItem.rightBarButtonItems = @[showATMsButton, scaleATMsButton];
+    // On the left
+    NSArray *items = @[@"обычная", @"спутник", @"гибрид"];
+    self.mapSegmentControl = [[UISegmentedControl alloc] initWithItems:items];
+    self.mapSegmentControl.frame = CGRectMake(0, 0, 180.f, 20.f);
+    UIBarButtonItem *segmentBarButton = [[UIBarButtonItem alloc] initWithCustomView:self.mapSegmentControl];
+    self.navigationItem.leftBarButtonItem = segmentBarButton;
     
+    // Location manager
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -66,53 +76,53 @@
         return nil;
     }
     static NSString *pinIdentifier = @"MapAnnotationView";
-    MKAnnotationView *pin = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:pinIdentifier];
-    if (!pin) {
-        pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pinIdentifier];
-        pin.image = [UIImage imageNamed:@"sberbankLogo.png"];
-        pin.canShowCallout = YES;
-        pin.rightCalloutAccessoryView = [self routeButton];
-        // pin.animatesDrop = YES;
+    MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:pinIdentifier];
+    if (!annotationView) {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pinIdentifier];
+        annotationView.image = [UIImage imageNamed:@"sberbankLogo.png"];
+        annotationView.canShowCallout = YES;
+        annotationView.rightCalloutAccessoryView = [self routeButton];
+        //annotationView pin.animatesDrop = YES;
     } else {
-        pin.annotation = annotation;
+        annotationView.annotation = annotation;
     }
-    return  pin;
+    return  annotationView;
 }
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)annotationViews {
-    
+    // For animated drop
     for (MKAnnotationView *annotationView in annotationViews) {
         
         if ([annotationView isEqual:[self.mapView userLocation]]) {
             continue;
         }
-        
         // Check if current annotation is inside visible map rect, else go to next one
-        
         MKMapPoint point =  MKMapPointForCoordinate(annotationView.annotation.coordinate);
         if (!MKMapRectContainsPoint(self.mapView.visibleMapRect, point)) {
             continue;
         }
         
-        
-        
         CGRect endFrame = annotationView.frame;
         
         annotationView.frame = CGRectOffset(endFrame, 0,-500);
         
-        [UIView animateWithDuration:0.5 delay:0.04*[annotationViews indexOfObject:annotationView] options: UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:0.5
+                              delay:0.04 * [annotationViews indexOfObject:annotationView]
+                            options: UIViewAnimationOptionCurveLinear animations:^{
             
             annotationView.frame = endFrame;
             
             // Animate squash
-        }completion:^(BOOL finished){
+        } completion:^(BOOL finished){
             if (finished) {
-                [UIView animateWithDuration:0.05 animations:^{
+                [UIView animateWithDuration:0.05
+                                 animations:^{
                     annotationView.transform = CGAffineTransformMakeScale(1.0, 0.8);
                     
-                }completion:^(BOOL finished){
+                } completion:^(BOOL finished){
                     if (finished) {
-                        [UIView animateWithDuration:0.1 animations:^{
+                        [UIView animateWithDuration:0.1
+                                         animations:^{
                             annotationView.transform = CGAffineTransformIdentity;
                         }];
                     }
