@@ -72,7 +72,7 @@
         pin.image = [UIImage imageNamed:@"sberbankLogo.png"];
         pin.canShowCallout = YES;
         pin.rightCalloutAccessoryView = [self routeButton];
-        //pin.animatesDrop = YES;
+        // pin.animatesDrop = YES;
     } else {
         pin.annotation = annotation;
     }
