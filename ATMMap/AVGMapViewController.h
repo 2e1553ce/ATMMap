@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AVGControllerService;
+
 @class MKMapView;
+@class AVGATMService;
 
 @interface AVGMapViewController : UIViewController
 
-@property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, strong) AVGControllerService *controllerService;
+@property (nonatomic, strong) AVGATMService *atmService;
 
 @end

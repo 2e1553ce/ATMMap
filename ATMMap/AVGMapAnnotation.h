@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MKAnnotation.h>
-#warning k chemu otnositsya? model?
 
 @interface AVGMapAnnotation : NSObject <MKAnnotation>
 

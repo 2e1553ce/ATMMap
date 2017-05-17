@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AVGControllerService;
+
+@class AVGATMService;
 
 @interface AVGATMTableViewController : UITableViewController
 
-@property (nonatomic, strong) AVGControllerService *controllerService;
+@property (nonatomic, strong) AVGATMService *atmService;
 
 @end

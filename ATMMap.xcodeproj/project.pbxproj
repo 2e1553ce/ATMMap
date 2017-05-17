@@ -17,11 +17,12 @@
 		19F3B7601EC5FDA3006D610A /* AVGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B75F1EC5FDA3006D610A /* AVGMapViewController.m */; };
 		19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7621EC5FE00006D610A /* AVGATMTableViewController.m */; };
 		19F3B7691EC5FEB5006D610A /* AVGATMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7681EC5FEB5006D610A /* AVGATMService.m */; };
-		19F3B76C1EC5FF2A006D610A /* AVGControllerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */; };
 		19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7731EC9EEEC006D610A /* AVGATM.m */; };
 		19F3B7771ECA1FEE006D610A /* AVGMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */; };
 		19F3B77D1ECB0D64006D610A /* sberbankLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77C1ECB0D64006D610A /* sberbankLogo.png */; };
 		19F3B77F1ECB1150006D610A /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77E1ECB1150006D610A /* route.png */; };
+		19F3B78A1ECCAC0B006D610A /* AVGATMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7891ECCAC0B006D610A /* AVGATMCell.m */; };
+		1C854E95688AEC905E6240EE /* libPods-ATMMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E80B0BF0DC9B7E0087AC731 /* libPods-ATMMap.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +63,6 @@
 		19F3B7621EC5FE00006D610A /* AVGATMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATMTableViewController.m; sourceTree = "<group>"; };
 		19F3B7671EC5FEB5006D610A /* AVGATMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMService.h; sourceTree = "<group>"; };
 		19F3B7681EC5FEB5006D610A /* AVGATMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATMService.m; sourceTree = "<group>"; };
-		19F3B76A1EC5FF2A006D610A /* AVGControllerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGControllerService.h; sourceTree = "<group>"; };
-		19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGControllerService.m; sourceTree = "<group>"; };
 		19F3B76D1EC60EFE006D610A /* AVGATMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMManager.h; sourceTree = "<group>"; };
 		19F3B7721EC9EEEC006D610A /* AVGATM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATM.h; sourceTree = "<group>"; };
 		19F3B7731EC9EEEC006D610A /* AVGATM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATM.m; sourceTree = "<group>"; };
@@ -71,6 +70,12 @@
 		19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGMapAnnotation.m; sourceTree = "<group>"; };
 		19F3B77C1ECB0D64006D610A /* sberbankLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sberbankLogo.png; sourceTree = "<group>"; };
 		19F3B77E1ECB1150006D610A /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
+		19F3B7801ECBC0D9006D610A /* ATMMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ATMMap-Prefix.pch"; sourceTree = "<group>"; };
+		19F3B7881ECCAC0B006D610A /* AVGATMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMCell.h; sourceTree = "<group>"; };
+		19F3B7891ECCAC0B006D610A /* AVGATMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGATMCell.m; sourceTree = "<group>"; };
+		1E80B0BF0DC9B7E0087AC731 /* libPods-ATMMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ATMMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53A06D2E78332F234347C389 /* Pods-ATMMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATMMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-ATMMap/Pods-ATMMap.release.xcconfig"; sourceTree = "<group>"; };
+		6A4678DFB9770A0998E0B0B2 /* Pods-ATMMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATMMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ATMMap/Pods-ATMMap.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1933AFA01EC47075008001E4 /* MapKit.framework in Frameworks */,
+				1C854E95688AEC905E6240EE /* libPods-ATMMap.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +113,7 @@
 				1933AF8F1EC4703D008001E4 /* ATMMapUITests */,
 				1933AF691EC4703D008001E4 /* Products */,
 				1933AF9E1EC47075008001E4 /* Frameworks */,
+				BD89E748093BBBC6387D8016 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				19F3B7781ECA5269006D610A /* Images */,
+				19F3B7801ECBC0D9006D610A /* ATMMap-Prefix.pch */,
 				1933AF6C1EC4703D008001E4 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -167,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				1933AF9F1EC47075008001E4 /* MapKit.framework */,
+				1E80B0BF0DC9B7E0087AC731 /* libPods-ATMMap.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -174,9 +183,9 @@
 		1933AFA11EC470B2008001E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				19F3B76D1EC60EFE006D610A /* AVGATMManager.h */,
 				19F3B7641EC5FE38006D610A /* Service */,
 				19F3B7711EC9EE70006D610A /* ATM */,
+				19F3B7821ECC6E4E006D610A /* MapAnnotation */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -184,8 +193,7 @@
 		1933AFA21EC470BC008001E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				19F3B7751ECA1FEE006D610A /* AVGMapAnnotation.h */,
-				19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */,
+				19F3B7871ECCABE0006D610A /* Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -220,7 +228,7 @@
 		19F3B7641EC5FE38006D610A /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				19F3B7661EC5FE68006D610A /* Controllers */,
+				19F3B76D1EC60EFE006D610A /* AVGATMManager.h */,
 				19F3B7651EC5FE46006D610A /* Google ATM */,
 			);
 			name = Service;
@@ -233,15 +241,6 @@
 				19F3B7681EC5FEB5006D610A /* AVGATMService.m */,
 			);
 			name = "Google ATM";
-			sourceTree = "<group>";
-		};
-		19F3B7661EC5FE68006D610A /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				19F3B76A1EC5FF2A006D610A /* AVGControllerService.h */,
-				19F3B76B1EC5FF2A006D610A /* AVGControllerService.m */,
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 		19F3B7711EC9EE70006D610A /* ATM */ = {
@@ -270,6 +269,33 @@
 			name = SberbankLogo;
 			sourceTree = "<group>";
 		};
+		19F3B7821ECC6E4E006D610A /* MapAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B7751ECA1FEE006D610A /* AVGMapAnnotation.h */,
+				19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */,
+			);
+			name = MapAnnotation;
+			sourceTree = "<group>";
+		};
+		19F3B7871ECCABE0006D610A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19F3B7881ECCAC0B006D610A /* AVGATMCell.h */,
+				19F3B7891ECCAC0B006D610A /* AVGATMCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		BD89E748093BBBC6387D8016 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A4678DFB9770A0998E0B0B2 /* Pods-ATMMap.debug.xcconfig */,
+				53A06D2E78332F234347C389 /* Pods-ATMMap.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,9 +303,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1933AF951EC4703D008001E4 /* Build configuration list for PBXNativeTarget "ATMMap" */;
 			buildPhases = (
+				E8C27E823B1A7F3D7C4FEAC8 /* [CP] Check Pods Manifest.lock */,
 				1933AF641EC4703D008001E4 /* Sources */,
 				1933AF651EC4703D008001E4 /* Frameworks */,
 				1933AF661EC4703D008001E4 /* Resources */,
+				D3CDAD4C57B2F4D6DB95006B /* [CP] Embed Pods Frameworks */,
+				A9C35453470E87C9C89A9D75 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -402,12 +431,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A9C35453470E87C9C89A9D75 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ATMMap/Pods-ATMMap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3CDAD4C57B2F4D6DB95006B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ATMMap/Pods-ATMMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8C27E823B1A7F3D7C4FEAC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1933AF641EC4703D008001E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19F3B76C1EC5FF2A006D610A /* AVGControllerService.m in Sources */,
 				19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */,
 				1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */,
 				19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */,
@@ -415,6 +491,7 @@
 				1933AF6D1EC4703D008001E4 /* main.m in Sources */,
 				19F3B7601EC5FDA3006D610A /* AVGMapViewController.m in Sources */,
 				19F3B7691EC5FEB5006D610A /* AVGATMService.m in Sources */,
+				19F3B78A1ECCAC0B006D610A /* AVGATMCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,9 +630,12 @@
 		};
 		1933AF961EC4703D008001E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A4678DFB9770A0998E0B0B2 /* Pods-ATMMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z48WYVF59J;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ATMMap/ATMMap-Prefix.pch";
 				INFOPLIST_FILE = ATMMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aivar.vucins.ATMMap;
@@ -565,9 +645,12 @@
 		};
 		1933AF971EC4703D008001E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53A06D2E78332F234347C389 /* Pods-ATMMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z48WYVF59J;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ATMMap/ATMMap-Prefix.pch";
 				INFOPLIST_FILE = ATMMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aivar.vucins.ATMMap;

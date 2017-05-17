@@ -8,9 +8,15 @@
 
 #import "AVGATMService.h"
 #import "AVGATM.h"
-#import <CoreLocation/CLLocation.h>
 
 static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4";
+
+@interface AVGATMService ()
+
+@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSURLSessionDataTask *sessionDataTask;
+
+@end
 
 @implementation AVGATMService
 
@@ -31,7 +37,11 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
 
 - (void)getATMsWithName:(NSString *)name
            nearLocation:(CLLocationCoordinate2D)coordinate
-  withCompletionHandler:(void(^)(NSArray *ATMs, NSError *error))completion {
+  withCompletionHandler:(void(^)(NSArray *atms, NSError *error))completion {
+    
+    if (self.sessionDataTask) {
+        [self.sessionDataTask cancel];
+    }
     
     NSString *urlBaseString = @"https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
     NSString *urlParametersString = [NSString stringWithFormat:@"location=%f,%f&keyword=%@&key=%@&type=atm&rankby=distance&language=ru",
@@ -48,32 +58,49 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
     [request setHTTPMethod:@"GET"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    [[self.session dataTaskWithRequest:request
+
+    self.sessionDataTask = [self.session dataTaskWithRequest:request
                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                          
-                         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                         dict = dict[@"results"];
-                         
-                         NSMutableArray *atms = [NSMutableArray arrayWithCapacity:[dict count]];
-                         for (id object in dict) {
-                             CLLocationCoordinate2D atmLocation;
-                            #warning et norm? - [][][]
-                             atmLocation.latitude = [object[@"geometry"][@"location"][@"lat"] floatValue];
-                             atmLocation.longitude = [object[@"geometry"][@"location"][@"lng"] floatValue];
+                         if (data) {
+                             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                             dict = dict[@"results"];
                              
-                             BOOL isOpen = object[@"opening_hours"][@"open_now"];
+                             NSMutableArray *atms = [NSMutableArray arrayWithCapacity:[dict count]];
+                             for (id object in dict) {
+                                 CLLocationCoordinate2D atmLocation;
+                                 NSDictionary *geometry = object[@"geometry"];
+                                 NSDictionary *location = geometry[@"location"];
+                                 atmLocation.latitude   = [location[@"lat"] floatValue];
+                                 atmLocation.longitude  = [location[@"lng"] floatValue];
+                                 
+                                 NSDictionary *openingHours = object[@"opening_hours"];
+                                 BOOL isOpen = openingHours[@"open_now"];
+                                 
+                                 AVGATM *atm = [[AVGATM alloc] initWithName:object[@"name"] address:object[@"vicinity"] location:atmLocation open:isOpen];
+                                 [atms addObject:atm];
+                             }
+                             self.atms = atms;
                              
-                             AVGATM *atm = [[AVGATM alloc] initWithName:object[@"name"] address:object[@"vicinity"] location:atmLocation open:isOpen];
-                             [atms addObject:atm];
-                         }
-                         
-                         if (completion) {
+                             if (completion) {
+                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                     completion(self.atms, error);
+                                 });
+                             }
+                         } else {
+                             #warning надо ли?
                              dispatch_async(dispatch_get_main_queue(), ^{
-                                 completion(atms, error);
+                                 completion(nil, error);
                              });
+                             return;
                          }
-    }] resume];
+    }];
+    [self.sessionDataTask resume];
+}
+
+- (void)calculateDistanceAndTimeForAtms:(NSArray *)atms withCompletionHandler:(void(^)(NSArray *atms, NSError *error))completion {
+    
+    
 }
 
 @end

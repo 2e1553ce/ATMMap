@@ -10,8 +10,6 @@
 
 @interface AVGATMService : NSObject <AVGATMManager>
 
-#warning Stop all tasks?
-#warning как он видит нсобж итд
-@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, copy) NSArray *atms;
 
 @end

@@ -9,12 +9,9 @@
 #import "AppDelegate.h"
 #import "AVGATMTableViewController.h"
 #import "AVGMapViewController.h"
-#import "AVGControllerService.h"
+#import "AVGATMService.h"
 
 @interface AppDelegate ()
-{
-    AVGControllerService *_controllerService;
-}
 
 @end
 
@@ -36,18 +33,19 @@
     tableNavigationController.tabBarItem.title = @"Список";
     tableNavigationController.tabBarItem.titlePositionAdjustment = UIOffsetMake(0.f, -10.f);
     
-    _controllerService = [AVGControllerService new];
+    // Service
+    AVGATMService *service = [AVGATMService new];
     
     // Map view controller
     AVGMapViewController *mapViewController = [AVGMapViewController new];
-    mapViewController.controllerService = _controllerService;
+    mapViewController.atmService = service;
     mapNavigationController.viewControllers = @[mapViewController];
     
     [mapViewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(-100, -100)];
     
     // Table view controller
     AVGATMTableViewController *atmTableViewController = [AVGATMTableViewController new];
-    atmTableViewController.controllerService = _controllerService;
+    atmTableViewController.atmService = service;
     tableNavigationController.viewControllers = @[atmTableViewController];
     
     // Setting Tabbar controller

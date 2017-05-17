@@ -7,18 +7,18 @@
 //
 
 #import "AVGMapViewController.h"
-#import "AVGControllerService.h"
 #import "AVGATMService.h"
 #import "AVGMapAnnotation.h"
 #import "AVGATM.h"
+#import <Masonry.h>
 @import MapKit;
 
 @interface AVGMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) AVGATMService *atmService;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, copy) NSArray *atms;
 @property (nonatomic, strong) UISegmentedControl *mapSegmentControl;
+@property (nonatomic, strong) MKMapView *mapView;
 
 @end
 
@@ -30,18 +30,23 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
     
-    self.atmService = [AVGATMService new];
     [self setUpInterface];
 }
 
-#pragma mark - Setting map view
+#pragma mark - Setting interface
 
 - (void)setUpInterface {
     // Map view
-    self.mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    self.mapView = [MKMapView new];
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.centerY.equalTo(self.view.mas_centerY);
+        make.width.equalTo(self.view.mas_width);
+        make.height.equalTo(self.view.mas_height);
+    }];
     
     // UIBarButtons at navigation bar
     // On the right
@@ -57,7 +62,9 @@
     // On the left
     NSArray *items = @[@"обычная", @"спутник", @"гибрид"];
     self.mapSegmentControl = [[UISegmentedControl alloc] initWithItems:items];
-    self.mapSegmentControl.frame = CGRectMake(0, 0, 180.f, 20.f);
+    self.mapSegmentControl.frame = CGRectMake(0, 0, 180.f, 30.f);
+    self.mapSegmentControl.selectedSegmentIndex = 0;
+    [self.mapSegmentControl addTarget:self action:@selector(mapSegmentControlAction:) forControlEvents:UIControlEventValueChanged];
     UIBarButtonItem *segmentBarButton = [[UIBarButtonItem alloc] initWithCustomView:self.mapSegmentControl];
     self.navigationItem.leftBarButtonItem = segmentBarButton;
     
@@ -104,7 +111,7 @@
         
         CGRect endFrame = annotationView.frame;
         
-        annotationView.frame = CGRectOffset(endFrame, 0,-500);
+        annotationView.frame = CGRectOffset(endFrame, 0, -500);
         
         [UIView animateWithDuration:0.5
                               delay:0.04 * [annotationViews indexOfObject:annotationView]
@@ -132,7 +139,7 @@
     }
 }
 
-#pragma mark - Custom button
+#pragma mark - Route button
 
 - (UIButton *)routeButton {
     UIImage *image = [UIImage imageNamed:@"route.png"];
@@ -155,15 +162,16 @@
     
     __weak typeof(self) weakSelf = self;
     [self.atmService getATMsWithName:@"Сбербанк" nearLocation:currentLocation withCompletionHandler:^(NSArray *atms, NSError *error) {
-        __strong typeof(self) strongSelf = weakSelf;
-        if(strongSelf) {
-            strongSelf.atms = atms;
-            
-            for (AVGATM *atm in strongSelf.atms) {
-                AVGMapAnnotation *annotation = [[AVGMapAnnotation alloc] initWithCoordinate:atm.location
-                                                                                      title:atm.name
-                                                                                   subtitle:atm.address];
-                [strongSelf.mapView addAnnotation:annotation];
+        if (atms.count > 0) {
+            __strong typeof(self) strongSelf = weakSelf;
+            if(strongSelf) {
+                strongSelf.atms = atms;
+                for (AVGATM *atm in strongSelf.atms) {
+                    AVGMapAnnotation *annotation = [[AVGMapAnnotation alloc] initWithCoordinate:atm.location
+                                                                                          title:atm.name
+                                                                                       subtitle:atm.address];
+                    [strongSelf.mapView addAnnotation:annotation];
+                }
             }
         }
     }];
@@ -172,11 +180,14 @@
 - (void)scaleToAllPins:(UIBarButtonItem *)sender {
     MKMapRect zoomRect = MKMapRectNull;
     
+    double delta = 20000.0;
+    if ([self.mapView.annotations count] > 1) {
+        delta = 1000.0;
+    }
+    
     for (id <MKAnnotation> annotation in self.mapView.annotations) {
         CLLocationCoordinate2D coordinate = annotation.coordinate;
         MKMapPoint center =  MKMapPointForCoordinate(coordinate);
-        
-        static double delta = 20000;
         MKMapRect rect = MKMapRectMake(center.x - delta, center.y - delta, delta * 2, delta * 2);
         zoomRect = MKMapRectUnion(zoomRect, rect);
     }
@@ -189,6 +200,24 @@
 
 - (void)routeButtonTapped:(UIButton *)sender {
     
+}
+
+- (void)mapSegmentControlAction:(UISegmentedControl *)sender {
+    
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            self.mapView.mapType = MKMapTypeStandard;
+            break;
+        case 1:
+            self.mapView.mapType = MKMapTypeSatellite;
+            break;
+        case 2:
+            self.mapView.mapType = MKMapTypeHybrid;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end
