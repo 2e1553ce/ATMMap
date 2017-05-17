@@ -11,5 +11,7 @@
 @interface AVGATMService : NSObject <AVGATMManager>
 
 @property (nonatomic, copy) NSArray *atms;
+@property (nonatomic, assign) BOOL isDistanceSet;
+@property (nonatomic, assign) CLLocationCoordinate2D userLocation;
 
 @end

@@ -16,7 +16,6 @@
 @interface AVGMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, copy) NSArray *atms;
 @property (nonatomic, strong) UISegmentedControl *mapSegmentControl;
 @property (nonatomic, strong) MKMapView *mapView;
 
@@ -165,8 +164,7 @@
         if (atms.count > 0) {
             __strong typeof(self) strongSelf = weakSelf;
             if(strongSelf) {
-                strongSelf.atms = atms;
-                for (AVGATM *atm in strongSelf.atms) {
+                for (AVGATM *atm in strongSelf.atmService.atms) {
                     AVGMapAnnotation *annotation = [[AVGMapAnnotation alloc] initWithCoordinate:atm.location
                                                                                           title:atm.name
                                                                                        subtitle:atm.address];

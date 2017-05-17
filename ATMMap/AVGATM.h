@@ -15,8 +15,8 @@
 @property (assign, nonatomic) CLLocationCoordinate2D    location;
 @property (assign, nonatomic) BOOL                      isOpen;
 
-@property (nonatomic, assign) CGFloat distance;
-@property (nonatomic, strong) NSDate *time;
+@property (nonatomic, assign) NSInteger distance;
+@property (nonatomic, copy) NSString *time;
 
 - (instancetype)initWithName:(NSString *)name
                      address:(NSString *)address

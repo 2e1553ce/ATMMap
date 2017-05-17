@@ -43,6 +43,9 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
         [self.sessionDataTask cancel];
     }
     
+    self.userLocation = coordinate;
+    self.isDistanceSet = NO;
+    
     NSString *urlBaseString = @"https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
     NSString *urlParametersString = [NSString stringWithFormat:@"location=%f,%f&keyword=%@&key=%@&type=atm&rankby=distance&language=ru",
                                      coordinate.latitude,
@@ -98,9 +101,42 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
     [self.sessionDataTask resume];
 }
 
-- (void)calculateDistanceAndTimeForAtms:(NSArray *)atms withCompletionHandler:(void(^)(NSArray *atms, NSError *error))completion {
+- (void)calculateTimeForAtms:(NSArray *)atms withCompletionHandler:(void(^)(NSArray *atms, NSError *error))completion {
     
-    
+    for (AVGATM *atm in atms) {
+        CGFloat atmLatitude = atm.location.latitude;
+        CGFloat atmLongitude = atm.location.longitude;
+        
+        CGFloat userLatitude = self.userLocation.latitude;
+        CGFloat userLongitude = self.userLocation.longitude;
+        
+        NSString *strUrl = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false&mode=%@key=%@", atmLatitude,  atmLongitude, userLatitude,  userLongitude, @"DRIVING", kGoogleApiKey];
+        NSURL *url = [NSURL URLWithString:[strUrl stringByAddingPercentEncodingWithAllowedCharacters:
+                                           [NSCharacterSet URLFragmentAllowedCharacterSet]]];
+        usleep(10000); // иначе ответы через 1 пустые хз
+        NSData *jsonData = [NSData dataWithContentsOfURL:url];
+        if(jsonData != nil)
+        {
+            NSError *error = nil;
+            id result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+            NSMutableArray *arrDistance=[result objectForKey:@"routes"];
+            if ([arrDistance count]==0) {
+                NSLog(@"N.A.");
+            }
+            else{
+                NSMutableArray *arrLeg=[[arrDistance objectAtIndex:0]objectForKey:@"legs"];
+                NSMutableDictionary *dictleg=[arrLeg objectAtIndex:0];
+                NSLog(@"%@",[NSString stringWithFormat:@"Estimated Time %@",[[dictleg   objectForKey:@"duration"] objectForKey:@"text"]]);
+                
+                atm.time = [[dictleg   objectForKey:@"duration"] objectForKey:@"text"];
+            }
+        }
+        else{
+            NSLog(@"N.A.");
+        }
+    }
+    self.isDistanceSet = YES;
+    completion(atms, nil);
 }
 
 @end

@@ -16,12 +16,11 @@ extern NSString *const AVGATMCellIdentifier;
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *addressLabel;
-@property (nonatomic, strong) UIView  *isOpenView;
 
 @property (nonatomic, strong) UILabel *distanceToBankLabel;
 @property (nonatomic, strong) UILabel *timeToBankLabel;
 
-- (void)addATM:(AVGATM *)atm;
+- (void)addATM:(AVGATM *)atm withCheckParameter:(BOOL)check;
 
 + (CGFloat)standartHeightForCell;
 + (CGFloat)extendedHeightForCell;

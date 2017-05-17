@@ -13,8 +13,6 @@
 
 @interface AVGATMTableViewController ()
 
-@property (nonatomic, assign) BOOL isDistanceSet;
-
 @end
 
 @implementation AVGATMTableViewController
@@ -23,7 +21,6 @@
     [super viewDidLoad];
     
     [self.tableView registerClass:[AVGATMCell class] forCellReuseIdentifier:AVGATMCellIdentifier];
-    self.isDistanceSet = NO;
     
     UIBarButtonItem *updateCellInfoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                                           target:self
@@ -33,7 +30,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"%@", _atmService.atms);
     [self.tableView reloadData];
 }
 
@@ -50,7 +46,7 @@
         cell = [[AVGATMCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AVGATMCellIdentifier];
     }
     AVGATM *atm = self.atmService.atms[indexPath.row];
-    cell.textLabel.text = atm.address;
+    [cell addATM:atm withCheckParameter:self.atmService.isDistanceSet];
     
     return cell;
 }
@@ -58,7 +54,7 @@
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.isDistanceSet) {
+    if (self.atmService.isDistanceSet) {
         return [AVGATMCell extendedHeightForCell];
     } else {
         return [AVGATMCell standartHeightForCell];
@@ -68,10 +64,29 @@
 #pragma mark - Actions
 
 - (void)updateCellInfo:(UIBarButtonItem *)sender {
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
-    [self.tableView beginUpdates];
-    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+       
+        for (AVGATM *atm in self.atmService.atms) {
+            CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:self.atmService.userLocation.latitude longitude:self.atmService.userLocation.longitude];
+            CLLocation *atmLocation = [[CLLocation alloc] initWithLatitude:atm.location.latitude longitude:atm.location.longitude];
+            NSInteger distanceInMeters = [userLocation distanceFromLocation:atmLocation];
+            NSLog(@"%ld", (long)distanceInMeters);
+            atm.distance = distanceInMeters;
+        }
+        [self.atmService calculateTimeForAtms:self.atmService.atms withCompletionHandler:^(NSArray *atms, NSError *error) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
+                [self.tableView beginUpdates];
+                [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView endUpdates];
+                
+            });
+            
+        }];
+    });
 }
 
 @end
