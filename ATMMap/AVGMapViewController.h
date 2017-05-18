@@ -15,4 +15,6 @@
 
 @property (nonatomic, strong) AVGATMService *atmService;
 
+- (void)scaleToAnnotationAtIndex:(NSInteger)index;
+
 @end

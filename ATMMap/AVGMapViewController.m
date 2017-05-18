@@ -11,6 +11,7 @@
 #import "AVGMapAnnotation.h"
 #import "AVGATM.h"
 #import <Masonry.h>
+#import "UIView+MKAnnotationView.h"
 @import MapKit;
 
 @interface AVGMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -18,6 +19,10 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) UISegmentedControl *mapSegmentControl;
 @property (nonatomic, strong) MKMapView *mapView;
+
+@property (nonatomic, strong) MKPolyline *routeLine; //your line
+@property (nonatomic, strong) MKPolylineRenderer *routeLineRenderer; //overlay view
+@property (nonatomic, strong) MKDirections *directions;
 
 @end
 
@@ -138,6 +143,17 @@
     }
 }
 
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
+    if ([overlay isKindOfClass:[MKPolyline class]]){
+        MKPolylineRenderer* renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        renderer.lineWidth = 3.0f;
+        renderer.strokeColor = [UIColor colorWithRed:0.5f green:0.5f blue:1.0f alpha:0.5f];
+        return renderer;
+    }
+    
+    return nil;
+}
+
 #pragma mark - Route button
 
 - (UIButton *)routeButton {
@@ -198,6 +214,46 @@
 
 - (void)routeButtonTapped:(UIButton *)sender {
     
+    if ([self.directions isCalculating]) {
+        [self.directions cancel];
+    }
+    
+    MKAnnotationView* annotationView = [sender superAnnotationView];
+    if (!annotationView) {
+        return;
+    }
+
+    CLLocationCoordinate2D coordinate = annotationView.annotation.coordinate;
+    
+    MKPlacemark* placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
+                                                   addressDictionary:nil];
+    MKMapItem* destination = [[MKMapItem alloc] initWithPlacemark:placemark];
+    
+    MKDirectionsRequest* request = [[MKDirectionsRequest alloc] init];
+    request.source = [MKMapItem mapItemForCurrentLocation];
+    request.destination = destination;
+    request.transportType = MKDirectionsTransportTypeAny;
+    request.requestsAlternateRoutes = YES;
+    
+    self.directions = [[MKDirections alloc] initWithRequest:request];
+    [self.directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"error");
+        } else if ([response.routes count] == 0) {
+            NSLog(@"error");
+        } else {
+            [self.mapView removeOverlays:self.mapView.overlays];
+            
+            NSMutableArray* array = [NSMutableArray array];
+            for (MKRoute* route in response.routes){
+                [array addObject:route.polyline];
+            }
+            
+            [self.mapView addOverlays:array level:MKOverlayLevelAboveRoads];
+        }
+    }];
+
 }
 
 - (void)mapSegmentControlAction:(UISegmentedControl *)sender {
@@ -216,6 +272,27 @@
         default:
             break;
     }
+}
+
+#pragma mark - Scale to annotation
+
+- (void)scaleToAnnotationAtIndex:(NSInteger)index {
+    
+    MKMapRect zoomRect = MKMapRectNull;
+    double delta = 5000;
+    
+    AVGATM *atm = self.atmService.atms[index];
+    CLLocationCoordinate2D coordinate = atm.location;
+    
+    MKMapPoint center =  MKMapPointForCoordinate(coordinate);
+    MKMapRect rect = MKMapRectMake(center.x - delta, center.y - delta, delta * 2, delta * 2);
+    
+    zoomRect = MKMapRectUnion(zoomRect, rect);
+    zoomRect = [self.mapView mapRectThatFits:zoomRect];
+    
+    [self.mapView setVisibleMapRect:zoomRect
+                        edgePadding:UIEdgeInsetsMake(50.f, 50.f, 50.f, 50.f)
+                           animated:YES];
 }
 
 @end

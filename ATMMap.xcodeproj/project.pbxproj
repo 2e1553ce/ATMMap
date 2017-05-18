@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		192EF5E21ECDCEDD00743201 /* AVGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192EF5E11ECDCEDD00743201 /* AVGTabBarController.m */; };
+		192EF5E71ECDD5FB00743201 /* UIView+MKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 192EF5E61ECDD5FB00743201 /* UIView+MKAnnotationView.m */; };
 		1933AF6D1EC4703D008001E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF6C1EC4703D008001E4 /* main.m */; };
 		1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF6F1EC4703D008001E4 /* AppDelegate.m */; };
 		1933AF781EC4703D008001E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1933AF771EC4703D008001E4 /* Assets.xcassets */; };
@@ -43,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		192EF5E01ECDCEDD00743201 /* AVGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGTabBarController.h; sourceTree = "<group>"; };
+		192EF5E11ECDCEDD00743201 /* AVGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGTabBarController.m; sourceTree = "<group>"; };
+		192EF5E51ECDD5FB00743201 /* UIView+MKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MKAnnotationView.h"; sourceTree = "<group>"; };
+		192EF5E61ECDD5FB00743201 /* UIView+MKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAnnotationView.m"; sourceTree = "<group>"; };
 		1933AF681EC4703D008001E4 /* ATMMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATMMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1933AF6C1EC4703D008001E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1933AF6E1EC4703D008001E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +111,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		192EF5E31ECDCEE300743201 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				192EF5E01ECDCEDD00743201 /* AVGTabBarController.h */,
+				192EF5E11ECDCEDD00743201 /* AVGTabBarController.m */,
+				19F3B75D1EC5FD5A006D610A /* Table */,
+				19F3B75C1EC5FD4C006D610A /* Map */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		192EF5E41ECDD5BC00743201 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				192EF5E51ECDD5FB00743201 /* UIView+MKAnnotationView.h */,
+				192EF5E61ECDD5FB00743201 /* UIView+MKAnnotationView.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		1933AF5F1EC4703D008001E4 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +156,7 @@
 		1933AF6A1EC4703D008001E4 /* ATMMap */ = {
 			isa = PBXGroup;
 			children = (
+				192EF5E41ECDD5BC00743201 /* Categories */,
 				1933AFA11EC470B2008001E4 /* Model */,
 				1933AFA21EC470BC008001E4 /* View */,
 				1933AFA31EC470C3008001E4 /* Controller */,
@@ -201,8 +228,7 @@
 		1933AFA31EC470C3008001E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				19F3B75D1EC5FD5A006D610A /* Table */,
-				19F3B75C1EC5FD4C006D610A /* Map */,
+				192EF5E31ECDCEE300743201 /* TabBar */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -484,7 +510,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192EF5E21ECDCEDD00743201 /* AVGTabBarController.m in Sources */,
 				19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */,
+				192EF5E71ECDD5FB00743201 /* UIView+MKAnnotationView.m in Sources */,
 				1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */,
 				19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */,
 				19F3B7771ECA1FEE006D610A /* AVGMapAnnotation.m in Sources */,

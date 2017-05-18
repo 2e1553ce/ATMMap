@@ -113,7 +113,7 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
         NSString *strUrl = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false&mode=%@key=%@", atmLatitude,  atmLongitude, userLatitude,  userLongitude, @"DRIVING", kGoogleApiKey];
         NSURL *url = [NSURL URLWithString:[strUrl stringByAddingPercentEncodingWithAllowedCharacters:
                                            [NSCharacterSet URLFragmentAllowedCharacterSet]]];
-        usleep(10000); // иначе ответы через 1 пустые хз
+        sleep(1); // иначе ответы через 1 пустые хз
         NSData *jsonData = [NSData dataWithContentsOfURL:url];
         if(jsonData != nil)
         {
@@ -127,8 +127,10 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
                 NSMutableArray *arrLeg=[[arrDistance objectAtIndex:0]objectForKey:@"legs"];
                 NSMutableDictionary *dictleg=[arrLeg objectAtIndex:0];
                 NSLog(@"%@",[NSString stringWithFormat:@"Estimated Time %@",[[dictleg   objectForKey:@"duration"] objectForKey:@"text"]]);
+                NSLog(@"%@",[NSString stringWithFormat:@"Estimated distance %@",[[dictleg   objectForKey:@"distance"] objectForKey:@"text"]]);
                 
                 atm.time = [[dictleg   objectForKey:@"duration"] objectForKey:@"text"];
+                atm.distance = [[dictleg   objectForKey:@"distance"] objectForKey:@"text"];
             }
         }
         else{

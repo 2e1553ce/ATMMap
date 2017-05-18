@@ -96,7 +96,7 @@ NSString *const AVGATMCellIdentifier = @"AVGATMCellIdentifier";
     
     if (check) {
         if (atm.distance) {
-            _distanceToBankLabel.text = [NSString stringWithFormat:@"Расстояние до банкомата: %ld метров.", (long)atm.distance];
+            _distanceToBankLabel.text = [NSString stringWithFormat:@"Расстояние до банкомата: %@.", atm.distance];
         } else {
             _distanceToBankLabel.text = @"Расстояние до банкомата не определено.";
         }

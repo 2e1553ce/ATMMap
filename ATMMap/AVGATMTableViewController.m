@@ -10,6 +10,7 @@
 #import "AVGATMService.h"
 #import "AVGATMCell.h"
 #import "AVGATM.h"
+#import "AVGMapViewController.h"
 
 @interface AVGATMTableViewController ()
 
@@ -20,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationItem setTitle:@"Список банкоматов"];
     [self.tableView registerClass:[AVGATMCell class] forCellReuseIdentifier:AVGATMCellIdentifier];
     
     UIBarButtonItem *updateCellInfoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
@@ -61,20 +63,67 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // Get views. controllerIndex is passed in as the controller we want to go to.
+    UIView * fromView = self.tabBarController.selectedViewController.view;
+    UIView * toView = [[self.tabBarController.viewControllers objectAtIndex:0] view];
+    
+    NSInteger controllerIndex = 0;
+    // Transition using a page curl.
+    [UIView transitionFromView:fromView
+                        toView:toView
+                      duration:0.5
+                       options:(controllerIndex > self.tabBarController.selectedIndex ? UIViewAnimationOptionTransitionCrossDissolve : UIViewAnimationOptionTransitionCrossDissolve)
+                    completion:^(BOOL finished) {
+                        if (finished) {
+                            self.tabBarController.selectedIndex = controllerIndex;
+                            UINavigationController *navVC = self.tabBarController.viewControllers[0];
+                            AVGMapViewController *mapVC = navVC.viewControllers[0];
+                            [mapVC scaleToAnnotationAtIndex:indexPath.row];
+                        }
+                    }];
+}
+
 #pragma mark - Actions
 
 - (void)updateCellInfo:(UIBarButtonItem *)sender {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        
-        for (AVGATM *atm in self.atmService.atms) {
-            CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:self.atmService.userLocation.latitude longitude:self.atmService.userLocation.longitude];
-            CLLocation *atmLocation = [[CLLocation alloc] initWithLatitude:atm.location.latitude longitude:atm.location.longitude];
-            NSInteger distanceInMeters = [userLocation distanceFromLocation:atmLocation];
-            NSLog(@"%ld", (long)distanceInMeters);
-            atm.distance = distanceInMeters;
-        }
         [self.atmService calculateTimeForAtms:self.atmService.atms withCompletionHandler:^(NSArray *atms, NSError *error) {
+            
+            self.atmService.atms = [self.atmService.atms sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                
+                float dist1Float;
+                float dist2Float;
+                
+                NSString *distance1 = ((AVGATM *)obj1).distance;
+                NSString *checkForMeters1 = [distance1 substringFromIndex:distance1.length - 2];
+                if (![checkForMeters1 isEqualToString:@"km"]) {
+                    distance1 = [distance1 substringToIndex:distance1.length - 2];
+                    dist1Float = [distance1 floatValue] * 0.001;
+                } else {
+                    distance1 = [distance1 substringToIndex:distance1.length - 3];
+                    dist1Float = [distance1 floatValue];
+                }
+                
+                NSString *distance2 = ((AVGATM *)obj2).distance;
+                NSString *checkForMeters2 = [distance2 substringFromIndex:distance2.length - 2];
+                if (![checkForMeters2 isEqualToString:@"km"]) {
+                    distance2 = [distance2 substringToIndex:distance2.length - 2];
+                    dist2Float = [distance2 floatValue] * 0.001;
+                } else {
+                    distance2 = [distance2 substringToIndex:distance2.length - 3];
+                    dist2Float = [distance2 floatValue];
+                }
+                
+                if (dist1Float >= dist2Float) {
+                    return NSOrderedDescending;
+                } else {
+                    return NSOrderedAscending;
+                }
+            }];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 

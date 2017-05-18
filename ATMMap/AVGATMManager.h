@@ -18,4 +18,14 @@
                   withCompletionHandler:(void(^)(NSArray *atms, NSError *error))completion;
 
 @end
-
+/*
+ ToDo:
+ 2. Activity indicator
+ 6. cache image v itunes - url hash or md5
+ 
+ 12. vk+fb
+ 
+ 13. gcd phone
+ 
+ 14. self app
+ */
