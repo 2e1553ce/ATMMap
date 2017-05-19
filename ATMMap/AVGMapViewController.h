@@ -10,11 +10,11 @@
 
 @class MKMapView;
 @class AVGATMService;
+@class AVGControllerService;
 
 @interface AVGMapViewController : UIViewController
 
 @property (nonatomic, strong) AVGATMService *atmService;
-
-- (void)scaleToAnnotationAtIndex:(NSInteger)index;
+@property (nonatomic, strong) AVGControllerService *controllerService;
 
 @end
