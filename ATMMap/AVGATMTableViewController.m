@@ -11,8 +11,9 @@
 #import "AVGATMCell.h"
 #import "AVGATM.h"
 #import "AVGMapViewController.h"
+#import "AVGControllerService.h"
 
-@interface AVGATMTableViewController ()
+@interface AVGATMTableViewController () <AVGControllerServiceDelegate>
 
 @end
 
@@ -33,6 +34,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+}
+
+#pragma mark - AVGControllerServiceDelegate
+
+- (void)updateTable {
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -77,10 +84,15 @@
                        options:(controllerIndex > self.tabBarController.selectedIndex ? UIViewAnimationOptionTransitionCrossDissolve : UIViewAnimationOptionTransitionCrossDissolve)
                     completion:^(BOOL finished) {
                         if (finished) {
+                            
+                            self.tabBarController.selectedIndex = controllerIndex;
+                            [self.controllerService someMethod:indexPath.row];
+                            /*
                             self.tabBarController.selectedIndex = controllerIndex;
                             UINavigationController *navVC = self.tabBarController.viewControllers[0];
                             AVGMapViewController *mapVC = navVC.viewControllers[0];
                             [mapVC scaleToAnnotationAtIndex:indexPath.row];
+                             */
                         }
                     }];
 }

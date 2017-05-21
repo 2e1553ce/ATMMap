@@ -12,9 +12,10 @@
 #import "AVGATM.h"
 #import <Masonry.h>
 #import "UIView+MKAnnotationView.h"
+#import "AVGControllerService.h"
 @import MapKit;
 
-@interface AVGMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface AVGMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, AVGControllerServiceDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) UISegmentedControl *mapSegmentControl;
@@ -35,6 +36,8 @@
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self setUpInterface];
+    
+    self.controllerService.mapDelegate = self;
 }
 
 #pragma mark - Setting interface
@@ -274,7 +277,7 @@
     }
 }
 
-#pragma mark - Scale to annotation
+#pragma mark - AVGControllerServiceDelegate
 
 - (void)scaleToAnnotationAtIndex:(NSInteger)index {
     
