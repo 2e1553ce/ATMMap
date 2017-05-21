@@ -47,6 +47,7 @@
     AVGATMTableViewController *atmTableViewController = [AVGATMTableViewController new];
     atmTableViewController.atmService = service;
     atmTableViewController.controllerService = controllerService;
+    atmTableViewController.controllerService.mapDelegate = atmTableViewController;
     tableNavigationController.viewControllers = @[atmTableViewController];
     
     // Setting Tabbar controller

@@ -29,8 +29,6 @@
                                                                                           target:self
                                                                                           action:@selector(updateCellInfo:)];
     self.navigationItem.rightBarButtonItem = updateCellInfoButton;
-    
-    self.controllerService.tableDelegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
