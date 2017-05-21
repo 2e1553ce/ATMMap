@@ -39,6 +39,7 @@
     AVGMapViewController *mapViewController = [AVGMapViewController new];
     mapViewController.atmService = service;
     mapViewController.controllerService = controllerService;
+    mapViewController.controllerService.mapDelegate = mapViewController;
     mapNavigationController.viewControllers = @[mapViewController];
     
     [mapViewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(-100, -100)];
@@ -47,7 +48,7 @@
     AVGATMTableViewController *atmTableViewController = [AVGATMTableViewController new];
     atmTableViewController.atmService = service;
     atmTableViewController.controllerService = controllerService;
-    atmTableViewController.controllerService.mapDelegate = atmTableViewController;
+    atmTableViewController.controllerService.tableDelegate = atmTableViewController;
     tableNavigationController.viewControllers = @[atmTableViewController];
     
     // Setting Tabbar controller

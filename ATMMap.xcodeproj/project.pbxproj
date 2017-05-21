@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		192EF5E21ECDCEDD00743201 /* AVGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192EF5E11ECDCEDD00743201 /* AVGTabBarController.m */; };
 		192EF5E71ECDD5FB00743201 /* UIView+MKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 192EF5E61ECDD5FB00743201 /* UIView+MKAnnotationView.m */; };
 		192EF5EC1ECF134400743201 /* AVGControllerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 192EF5EB1ECF134400743201 /* AVGControllerService.m */; };
 		1933AF6D1EC4703D008001E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF6C1EC4703D008001E4 /* main.m */; };
@@ -17,10 +16,11 @@
 		1933AF861EC4703D008001E4 /* ATMMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF851EC4703D008001E4 /* ATMMapTests.m */; };
 		1933AF911EC4703D008001E4 /* ATMMapUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1933AF901EC4703D008001E4 /* ATMMapUITests.m */; };
 		1933AFA01EC47075008001E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1933AF9F1EC47075008001E4 /* MapKit.framework */; };
+		19C016D91ED1A90D000A18DF /* AVGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C016D81ED1A90D000A18DF /* AVGTabBarController.m */; };
+		19C016DB1ED1B168000A18DF /* AVGATM.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7731EC9EEEC006D610A /* AVGATM.m */; };
 		19F3B7601EC5FDA3006D610A /* AVGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B75F1EC5FDA3006D610A /* AVGMapViewController.m */; };
 		19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7621EC5FE00006D610A /* AVGATMTableViewController.m */; };
 		19F3B7691EC5FEB5006D610A /* AVGATMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7681EC5FEB5006D610A /* AVGATMService.m */; };
-		19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7731EC9EEEC006D610A /* AVGATM.m */; };
 		19F3B7771ECA1FEE006D610A /* AVGMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F3B7761ECA1FEE006D610A /* AVGMapAnnotation.m */; };
 		19F3B77D1ECB0D64006D610A /* sberbankLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77C1ECB0D64006D610A /* sberbankLogo.png */; };
 		19F3B77F1ECB1150006D610A /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F3B77E1ECB1150006D610A /* route.png */; };
@@ -47,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		192EF5E01ECDCEDD00743201 /* AVGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGTabBarController.h; sourceTree = "<group>"; };
-		192EF5E11ECDCEDD00743201 /* AVGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGTabBarController.m; sourceTree = "<group>"; };
 		192EF5E51ECDD5FB00743201 /* UIView+MKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MKAnnotationView.h"; sourceTree = "<group>"; };
 		192EF5E61ECDD5FB00743201 /* UIView+MKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAnnotationView.m"; sourceTree = "<group>"; };
 		192EF5EA1ECF134400743201 /* AVGControllerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGControllerService.h; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		1933AF901EC4703D008001E4 /* ATMMapUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATMMapUITests.m; sourceTree = "<group>"; };
 		1933AF921EC4703D008001E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1933AF9F1EC47075008001E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		19C016D81ED1A90D000A18DF /* AVGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGTabBarController.m; sourceTree = "<group>"; };
 		19F3B75E1EC5FDA3006D610A /* AVGMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGMapViewController.h; sourceTree = "<group>"; };
 		19F3B75F1EC5FDA3006D610A /* AVGMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVGMapViewController.m; sourceTree = "<group>"; };
 		19F3B7611EC5FE00006D610A /* AVGATMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVGATMTableViewController.h; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				192EF5E01ECDCEDD00743201 /* AVGTabBarController.h */,
+				19C016D81ED1A90D000A18DF /* AVGTabBarController.m */,
 				19F3B75D1EC5FD5A006D610A /* Table */,
 				19F3B75C1EC5FD4C006D610A /* Map */,
 			);
@@ -530,9 +531,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C016DB1ED1B168000A18DF /* AVGATM.m in Sources */,
+				19C016D91ED1A90D000A18DF /* AVGTabBarController.m in Sources */,
 				192EF5EC1ECF134400743201 /* AVGControllerService.m in Sources */,
-				192EF5E21ECDCEDD00743201 /* AVGTabBarController.m in Sources */,
-				19F3B7741EC9EEEC006D610A /* AVGATM.m in Sources */,
 				192EF5E71ECDD5FB00743201 /* UIView+MKAnnotationView.m in Sources */,
 				1933AF701EC4703D008001E4 /* AppDelegate.m in Sources */,
 				19F3B7631EC5FE00006D610A /* AVGATMTableViewController.m in Sources */,

@@ -10,8 +10,4 @@
 
 @implementation AVGControllerService
 
-- (void)someMethod:(NSInteger)index {
-    [self.mapDelegate scaleToAnnotationAtIndex:index];
-}
-
 @end

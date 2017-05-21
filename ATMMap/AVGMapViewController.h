@@ -10,9 +10,9 @@
 
 @class MKMapView;
 @class AVGATMService;
-@class AVGControllerService;
+#import "AVGControllerService.h"
 
-@interface AVGMapViewController : UIViewController
+@interface AVGMapViewController : UIViewController <AVGMapControllerDelegate>
 
 @property (nonatomic, strong) AVGATMService *atmService;
 @property (nonatomic, strong) AVGControllerService *controllerService;

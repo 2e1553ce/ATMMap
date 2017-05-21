@@ -11,7 +11,7 @@
 @class AVGATMService;
 #import "AVGControllerService.h"
 
-@interface AVGATMTableViewController : UITableViewController <AVGControllerServiceDelegate>
+@interface AVGATMTableViewController : UITableViewController <AVGTableControllerDelegate>
 
 @property (nonatomic, strong) AVGATMService *atmService;
 @property (nonatomic, strong) AVGControllerService *controllerService;

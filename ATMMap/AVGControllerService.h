@@ -8,20 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol AVGControllerServiceDelegate <NSObject>
+@protocol AVGMapControllerDelegate <NSObject>
 
-@optional
-
+@required
 - (void)scaleToAnnotationAtIndex:(NSInteger)index;
-- (void)moveFromAnnotationToTable;
 
 @end
 
+@protocol AVGTableControllerDelegate <NSObject>
+
+@required
+- (void)moveFromAnnotationToTableRowAtIndex:(NSInteger)index;
+
+@end
+
+
 @interface AVGControllerService : NSObject
 
-@property (nonatomic, weak) id <AVGControllerServiceDelegate> mapDelegate;
-@property (nonatomic, weak) id <AVGControllerServiceDelegate> tableDelegate;
-
-- (void)someMethod:(NSInteger)index;
+@property (nonatomic, weak) id <AVGMapControllerDelegate> mapDelegate;
+@property (nonatomic, weak) id <AVGTableControllerDelegate> tableDelegate;
 
 @end

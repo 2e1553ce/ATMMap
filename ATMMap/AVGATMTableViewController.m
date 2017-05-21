@@ -13,7 +13,7 @@
 #import "AVGMapViewController.h"
 #import "AVGControllerService.h"
 
-@interface AVGATMTableViewController () <AVGControllerServiceDelegate>
+@interface AVGATMTableViewController ()
 
 @end
 
@@ -36,9 +36,9 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - AVGControllerServiceDelegate
+#pragma mark - AVGTableControllerDelegate
 
-- (void)updateTable {
+- (void)moveFromAnnotationToTableRowAtIndex:(NSInteger)index {
     
 }
 
@@ -86,13 +86,7 @@
                         if (finished) {
                             
                             self.tabBarController.selectedIndex = controllerIndex;
-                            [self.controllerService someMethod:indexPath.row];
-                            /*
-                            self.tabBarController.selectedIndex = controllerIndex;
-                            UINavigationController *navVC = self.tabBarController.viewControllers[0];
-                            AVGMapViewController *mapVC = navVC.viewControllers[0];
-                            [mapVC scaleToAnnotationAtIndex:indexPath.row];
-                             */
+                            [self.controllerService.mapDelegate scaleToAnnotationAtIndex:indexPath.row];
                         }
                     }];
 }

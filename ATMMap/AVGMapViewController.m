@@ -15,7 +15,7 @@
 #import "AVGControllerService.h"
 @import MapKit;
 
-@interface AVGMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, AVGControllerServiceDelegate>
+@interface AVGMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) UISegmentedControl *mapSegmentControl;
@@ -36,8 +36,6 @@
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self setUpInterface];
-    
-    self.controllerService.mapDelegate = self;
 }
 
 #pragma mark - Setting interface
