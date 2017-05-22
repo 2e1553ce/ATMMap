@@ -21,8 +21,6 @@
 @property (nonatomic, strong) UISegmentedControl *mapSegmentControl;
 @property (nonatomic, strong) MKMapView *mapView;
 
-@property (nonatomic, strong) MKPolyline *routeLine; //your line
-@property (nonatomic, strong) MKPolylineRenderer *routeLineRenderer; //overlay view
 @property (nonatomic, strong) MKDirections *directions;
 
 @end
