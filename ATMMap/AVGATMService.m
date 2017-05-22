@@ -91,7 +91,6 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
                                  });
                              }
                          } else {
-                             #warning надо ли?
                              dispatch_async(dispatch_get_main_queue(), ^{
                                  completion(nil, error);
                              });
@@ -113,7 +112,7 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
         NSString *strUrl = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false&mode=%@key=%@", atmLatitude,  atmLongitude, userLatitude,  userLongitude, @"DRIVING", kGoogleApiKey];
         NSURL *url = [NSURL URLWithString:[strUrl stringByAddingPercentEncodingWithAllowedCharacters:
                                            [NSCharacterSet URLFragmentAllowedCharacterSet]]];
-        sleep(1); // иначе ответы через 1 пустые хз
+        // sleep(1); // иначе ответы через 1 пустые хз
         NSData *jsonData = [NSData dataWithContentsOfURL:url];
         if(jsonData != nil)
         {
@@ -121,20 +120,20 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
             id result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
             NSMutableArray *arrDistance=[result objectForKey:@"routes"];
             if ([arrDistance count]==0) {
-                NSLog(@"N.A.");
+                //NSLog(@"N.A.");
             }
             else{
                 NSMutableArray *arrLeg=[[arrDistance objectAtIndex:0]objectForKey:@"legs"];
                 NSMutableDictionary *dictleg=[arrLeg objectAtIndex:0];
-                NSLog(@"%@",[NSString stringWithFormat:@"Estimated Time %@",[[dictleg   objectForKey:@"duration"] objectForKey:@"text"]]);
-                NSLog(@"%@",[NSString stringWithFormat:@"Estimated distance %@",[[dictleg   objectForKey:@"distance"] objectForKey:@"text"]]);
+                //NSLog(@"%@",[NSString stringWithFormat:@"Estimated Time %@",[[dictleg   objectForKey:@"duration"] objectForKey:@"text"]]);
+                //NSLog(@"%@",[NSString stringWithFormat:@"Estimated distance %@",[[dictleg   objectForKey:@"distance"] objectForKey:@"text"]]);
                 
                 atm.time = [[dictleg   objectForKey:@"duration"] objectForKey:@"text"];
                 atm.distance = [[dictleg   objectForKey:@"distance"] objectForKey:@"text"];
             }
         }
         else{
-            NSLog(@"N.A.");
+            //NSLog(@"N.A.");
         }
     }
     self.isDistanceSet = YES;

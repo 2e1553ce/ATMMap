@@ -240,9 +240,9 @@
     [self.directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error) {
-            NSLog(@"error");
+            NSLog(@"error"); // alert
         } else if ([response.routes count] == 0) {
-            NSLog(@"error");
+            NSLog(@"error"); // alert
         } else {
             [self.mapView removeOverlays:self.mapView.overlays];
             

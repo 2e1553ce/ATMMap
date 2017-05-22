@@ -6,11 +6,9 @@
 //  Copyright © 2017 A.V. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@class MKMapView;
-@class AVGATMService;
 #import "AVGControllerService.h"
+
+@class AVGATMService;
 
 @interface AVGMapViewController : UIViewController <AVGMapControllerDelegate>
 

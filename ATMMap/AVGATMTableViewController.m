@@ -96,7 +96,8 @@
 - (void)updateCellInfo:(UIBarButtonItem *)sender {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-       
+        
+       // Sorting kms
         [self.atmService calculateTimeForAtms:self.atmService.atms withCompletionHandler:^(NSArray *atms, NSError *error) {
             
             self.atmService.atms = [self.atmService.atms sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
