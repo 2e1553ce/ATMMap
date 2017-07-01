@@ -125,15 +125,12 @@ static NSString *const kGoogleApiKey = @"AIzaSyBbB51DvwL8-KRuLyXT7O81XpGWBZyBmv4
             else{
                 NSMutableArray *arrLeg=[[arrDistance objectAtIndex:0]objectForKey:@"legs"];
                 NSMutableDictionary *dictleg=[arrLeg objectAtIndex:0];
-                //NSLog(@"%@",[NSString stringWithFormat:@"Estimated Time %@",[[dictleg   objectForKey:@"duration"] objectForKey:@"text"]]);
-                //NSLog(@"%@",[NSString stringWithFormat:@"Estimated distance %@",[[dictleg   objectForKey:@"distance"] objectForKey:@"text"]]);
                 
                 atm.time = [[dictleg   objectForKey:@"duration"] objectForKey:@"text"];
                 atm.distance = [[dictleg   objectForKey:@"distance"] objectForKey:@"text"];
             }
         }
         else{
-            //NSLog(@"N.A.");
         }
     }
     self.isDistanceSet = YES;
